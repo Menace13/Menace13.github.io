@@ -38,8 +38,8 @@ function runSimulation(winP1, numWin1, winP2, numWin2, gameCount) {
 		printToTextBox("ERROR: Average neutral wins per stock must be no more than 100.");
 	}
 	
-	if(gameCount > 1000000) {
-		printToTextBox("ERROR: Number of games too high (max. 1000000).")
+	if(gameCount > 10000000) {
+		printToTextBox("ERROR: Number of games too high (max. 10000000).")
 		return null;
 	}
 	
@@ -101,9 +101,9 @@ function winRateFix(bool) {
 	var rate2 = document.getElementById("neutralRate2");
 	if(bool) {
 		rate1.value = 1 - Number(rate2.value);
-		rate1.value = Math.round(rate1.value * Math.pow(10,rate2.value.length-2))/Math.pow(10,rate2.value.length-2);
+		rate1.value = Math.round(rate1.value * Math.pow(10,rate2.value.length))/Math.pow(10,rate2.value.length);
 	} else {
 		rate2.value = 1 - Number(rate1.value);
-		rate2.value = Math.round(rate2.value * Math.pow(10,rate1.value.length-2))/Math.pow(10,rate1.value.length-2);
+		rate2.value = Math.round(rate2.value * Math.pow(10,rate1.value.length))/Math.pow(10,rate1.value.length);
 	}
 }
