@@ -100,7 +100,6 @@ function winRateFix(bool) {
 	var rate1 = document.getElementById("neutralRate1");
 	var rate2 = document.getElementById("neutralRate2");
 	if(bool) {
-		printToTextBox(rate1.value.length);
 		rate1.value = 1 - Number(rate2.value);
 		rate1.value = Math.round(rate1.value * Math.pow(10,rate2.value.length-2))/Math.pow(10,rate2.value.length-2);
 	} else {
