@@ -12,6 +12,8 @@ function runSimulation(winP1, numWin1, winP2, numWin2, gameCount) {
 	var rand;
 	var stocks1;
 	var stocks2;
+	var winRatio1;
+	var winRatio2;
 	var gameWins1 = 0;
 	var gameWins2 = 0;
 	var neutralWins1 = 0;
@@ -79,11 +81,30 @@ function runSimulation(winP1, numWin1, winP2, numWin2, gameCount) {
 			gameWins1++;
 		}
 	}
-	printToTextBox("P1 Wins: " + gameWins1 + " - P2 Wins: " + gameWins2 + "  (" + winP1 +", "+ numWin1 +", "+ winP2 +", "+ numWin2 +", "+ gameCount + ")");
+	
+	winRatio1 = gameWins1 * 100 / gameCount;
+	winRatio2 = gameWins2 * 100 / gameCount;
+	winRatio1 = parseFloat(Math.round(winRatio1 * 100) / 100).toFixed(2);
+	winRatio2 = parseFloat(Math.round(winRatio2 * 100) / 100).toFixed(2);
+	
+	printToTextBox("P1 Wins: " + gameWins1 + " - P2 Wins: " + gameWins2 + " - Matchup ratio: " + winRatio1 + ":" + winRatio2 + "  (Inputs: " + winP1 +", "+ numWin1 +", "+ winP2 +", "+ numWin2 +", "+ gameCount + ")");
 }
 
 function printToTextBox(text) {
 	var div = document.getElementById("textBox");
 	div.value = div.value + "\n" + text;
 	div.scrollTop = div.scrollHeight;
+}
+
+function winRateFix(bool) {
+	var rate1 = document.getElementById("neutralRate1");
+	var rate2 = document.getElementById("neutralRate2");
+	if(bool) {
+		printToTextBox(rate1.value.length);
+		rate1.value = 1 - Number(rate2.value);
+		rate1.value = Math.round(rate1.value * Math.pow(10,rate2.value.length-2))/Math.pow(10,rate2.value.length-2);
+	} else {
+		rate2.value = 1 - Number(rate1.value);
+		rate2.value = Math.round(rate2.value * Math.pow(10,rate1.value.length-2))/Math.pow(10,rate1.value.length-2);
+	}
 }
