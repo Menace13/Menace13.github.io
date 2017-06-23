@@ -1,28 +1,11 @@
 <html>
 	<head>
-		<title>Matchup Rate Simulator</title>
-		
-		<link href="style.css" rel="stylesheet"> 
-		
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		
-		<script src="simulator.js"></script>
+		<title>Menace13's projects</title>
 	</head>
 	<body>
-		<h1>Matchup Rate Simulator</h1>
-		<p><label>Character 1 neutral win rate (0.00-1.00)</label> <input type="number" min="0" max="1" value="0.50" step="0.01" oninput="winRateFix(0);" id="neutralRate1"></p>
-		<p><label>Character 1 average neutral wins per stock taken (1-100)</label> <input type="number" min="1" max="100" value="3" step="0.1" id="winCount1"></p>
-		<p><label>Character 2 neutral win rate (0.00-1.00)</label> <input type="number" min="0" max="1" value="0.50" step="0.01" oninput="winRateFix(1);" id="neutralRate2"></p>
-		<p><label>Character 2 average neutral wins per stock taken (1-100)</label> <input type="number" min="1" max="100" value="3" step="0.1" id="winCount2"></p>
-		<p><label>Number of games to simulate (max. 10 million)</label> <input type="number" min="1" max="10000000" value="1000" id="gameCount"></p>
-		<p><button type="button" onclick="startSimulation()">Run Simulation</button></p>
-		<textarea id="textBox" rows="20" cols="80" readonly="readonly">Output will be here.
-====================</textarea>
-		<p>v0.0.4</p>
+		<ul>
+			<li><a href="MatchupSimulator/index.html">Matchup Ratio Simulator</a></li>
+			<li><a href="IconWars/index.html">Icon War Statistics</a></li>
+		</ul>
 	</body>
 </html>
