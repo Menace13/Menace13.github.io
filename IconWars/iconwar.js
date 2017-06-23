@@ -100,9 +100,10 @@ function tableUpdate() {
 			var tempGames, tempWins, tempRate;
 			$.each(teamIcons,function(index,value) {
 				if(value.icon_id == iconID) {
-					$row.find("td:nth-child(3)").html = value.games;
-					$row.find("td:nth-child(4)").html = value.wins;
-					$row.find("td:nth-child(5)").html = (Math.round((value.wins / value.games)*10000) / 100) + '%';
+					console.log("Reached replacing values section: " + value.games + " " + value.wins);
+					$row.find("td:nth-child(3)").html(value.games);
+					$row.find("td:nth-child(4)").html(value.wins);
+					$row.find("td:nth-child(5)").html((Math.round((value.wins / value.games)*10000) / 100) + '%');
 				}
 			});
 		});
