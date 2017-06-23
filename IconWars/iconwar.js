@@ -103,7 +103,7 @@ function tableUpdate() {
 					console.log("Reached replacing values section: " + value.games + " " + value.wins);
 					$row.find("td:nth-child(3)").html(value.games);
 					$row.find("td:nth-child(4)").html(value.wins);
-					$row.find("td:nth-child(5)").html((Math.round((value.wins / value.games)*10000) / 100) + '%');
+					$row.find("td:nth-child(5)").html(parseFloat(Math.round((value.wins / value.games)*10000) / 100).toFixed(2) + '%');
 				}
 			});
 		});
