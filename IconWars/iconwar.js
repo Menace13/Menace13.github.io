@@ -8,14 +8,14 @@ var MyChartComponent = {
 				enabled: false
 			},
 			title: {
-				text: 'Icon War Most Wins'
+				text: 'Icon War Total Wins'
 			},
 			xAxis: {
 				categories: ['Burrito Esports', 'Fable Esports', 'FlySociety', 'Panda Global', 'Tempo Storm', 'VexX Gaming']
 			},
 			yAxis: {
 				title: {
-					text: 'Wins'
+					text: 'Total Wins'
 				}
 			},
 			legend: {
@@ -94,37 +94,37 @@ function tableWrite() {
         for (var i = 0; i < icons.length; i++) {
             var icon = icons[i];
             if (icon.icon_id === 112) {
-				icon.icon_name = "Burrito Esports";
+				icon.icon_name = "<img src='img/112.png' alt='112' height='45' width='45'>" + "Burrito Esports";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[0] = icon.wins;
             }
             if (icon.icon_id === 113) {
-				icon.icon_name = "Fable Esports";
+				icon.icon_name = "<img src='img/113.png' alt='113' height='45' width='45'> Fable Esports";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[1] = icon.wins;
             }
             if (icon.icon_id === 114) {
-				icon.icon_name = "FlySociety";
+				icon.icon_name = "<img src='img/114.png' alt='114' height='45' width='45'> FlySociety";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[2] = icon.wins;
             }
             if (icon.icon_id === 115) {
-				icon.icon_name = "Panda Global";
+				icon.icon_name = "<img src='img/115.png' alt='115' height='45' width='45'> Panda Global";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[3] = icon.wins;
             }
             if (icon.icon_id === 116) {
-				icon.icon_name = "Tempo Storm";
+				icon.icon_name = "<img src='img/116.png' alt='116' height='45' width='45'> Tempo Storm";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[4] = icon.wins;
             }
             if (icon.icon_id === 117) {
-				icon.icon_name = "VexX Gaming";
+				icon.icon_name = "<img src='img/117.png' alt='117' height='45' width='45'> VexX Gaming";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[5] = icon.wins;
             }
         }
-				
+		
 		MyChartComponent.updateChart(dataArray);
 		
 		var tempWinRate = "";
@@ -214,16 +214,22 @@ function tableUpdate() {
 			var tempGames, tempWins, tempRate;
 			$.each(teamIcons,function(index,value) {
 				if(value.icon_id == iconID) {
-					$row.find("td:nth-child(3)").html(value.games);
-					$row.find("td:nth-child(4)").html(value.wins);
-					$row.find("td:nth-child(5)").html(maxWins-value.wins);
-					$row.find("td:nth-child(6)").html(parseFloat(Math.round((value.wins / value.games)*10000) / 100).toFixed(2) + '%');
-					$row.find("td:nth-child(7)").html(parseFloat(Math.round((value.games / totalGames)*10000) / 100).toFixed(2) + '%');
-					$row.find("td:nth-child(8)").html(parseFloat(Math.round((value.wins / totalWins)*10000) / 100).toFixed(2) + '%');
+					$row.find("td:nth-child(3)").text(value.games);
+					$row.find("td:nth-child(4)").text(value.wins);
+					$row.find("td:nth-child(5)").text(maxWins-value.wins);
+					$row.find("td:nth-child(6)").text(parseFloat(Math.round((value.wins / value.games)*10000) / 100).toFixed(2) + '%');
+					$row.find("td:nth-child(7)").text(parseFloat(Math.round((value.games / totalGames)*10000) / 100).toFixed(2) + '%');
+					$row.find("td:nth-child(8)").text(parseFloat(Math.round((value.wins / totalWins)*10000) / 100).toFixed(2) + '%');
 				}
 			});
 		});
+		var resort = true,
+			callback = function(table){};
+
+		$("table#tablesort").trigger("update", [ resort, callback ]);		
 	});
+	
+	//console.log("Updated.");	
 	
 	if($('#speed1').is(':checked')) {
 		timeouts.push(setTimeout(function(){tableUpdate();}, 60000));
@@ -232,9 +238,6 @@ function tableUpdate() {
 		timeouts.push(setTimeout(function(){tableUpdate();}, 15000));	
 		$("#countdown").html(15);
 	}
-	
-	$("#tableId").trigger("update");
-	//console.log("Updated.");
 }
 
 function countdown() {
