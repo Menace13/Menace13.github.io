@@ -26,7 +26,7 @@
 				<label><input id="speed2" type="radio" name="speed" value="fast" checked /> Fast</label>
 			</div>
 			<div class="col-md-3">
-				<h2>Updating in... <span id="countdown">15</span></h2>
+				<h2>Updating in... <span id="countdown">60</span></h2>
 			</div>
 			<div class="col-md-12">
 				<table id="tablesort" class="table table-condensed tablesorter">
@@ -82,7 +82,7 @@
 		<script src="iconwar.js"></script>
 		<script>
 			countdown();
-			timeouts.push(setTimeout(function(){tableUpdate();}, 15000));
+			timeouts.push(setTimeout(function(){tableUpdate();}, 6E4));
 		</script>
 	</body>
 </html>

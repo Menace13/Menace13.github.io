@@ -85,7 +85,7 @@ $(document).ready (function () {
 
 
 function tableWrite() {
-	$.get("https://stats.rivalsofaether.com/api/icon_win_rates", function(response) {
+	$.get("https://stats.rivalsofaether.com/api/icon_win_rates?match_time=30&connect_types[]=ranked", function(response) {
         var icons = response.data;
 		var teamIcons = [];
 		
@@ -161,7 +161,7 @@ function tableWrite() {
 }
 
 function tableUpdate() {
-	$.get("https://stats.rivalsofaether.com/api/icon_win_rates", function(response) {
+	$.get("https://stats.rivalsofaether.com/api/icon_win_rates?match_time=30&connect_types[]=ranked", function(response) {
         var icons = response.data;
 		var teamIcons = [];
 		var maxWins = 0;
@@ -232,11 +232,11 @@ function tableUpdate() {
 	//console.log("Updated.");	
 	
 	if($('#speed1').is(':checked')) {
-		timeouts.push(setTimeout(function(){tableUpdate();}, 60000));
-		$("#countdown").html(60);
+		timeouts.push(setTimeout(function(){tableUpdate();}, 30E4));
+		$("#countdown").html(300);
 	} else {
-		timeouts.push(setTimeout(function(){tableUpdate();}, 15000));	
-		$("#countdown").html(15);
+		timeouts.push(setTimeout(function(){tableUpdate();}, 6E4));	
+		$("#countdown").html(60);
 	}
 }
 
