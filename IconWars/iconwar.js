@@ -11,7 +11,7 @@ var MyChartComponent = {
 				text: 'Icon War Total Wins'
 			},
 			xAxis: {
-				categories: ['Burrito Esports', 'Fable Esports', 'FlySociety', 'Panda Global', 'Tempo Storm', 'VexX Gaming']
+				categories: ['Burrito Esports', 'Fable Esports', 'Edax Pro', 'Panda Global', 'Tempo Storm', 'VexX Gaming']
 			},
 			yAxis: {
 				title: {
