@@ -104,7 +104,7 @@ function tableWrite() {
 				dataArray[1] = icon.wins;
             }
             if (icon.icon_id === 114) {
-				icon.icon_name = "<img src='img/114.png' alt='114' height='45' width='45'> FlySociety";
+				icon.icon_name = "<img src='img/114.png' alt='114' height='45' width='45'> Edax Pro";
 				teamIcons[teamIcons.length] = icon;
 				dataArray[2] = icon.wins;
             }
