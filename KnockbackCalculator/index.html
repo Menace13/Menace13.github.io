@@ -1,0 +1,119 @@
+<html>
+
+<head>
+	<title>Knockback Calculator</title>
+
+	<link href="style.css" rel="stylesheet">
+	<link href="lib/bootstrap.min.css" rel="stylesheet">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="container">
+			<div class="col-md-8">
+				<!-- main calculator stuff -->
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="targetC">Hit Character</label>
+						<select class="form-control" id="targetC">
+							<option>Absa</option>
+							<option>Etalus</option>
+							<option>Etalus (armor)</option>
+							<option>Forsburn</option>
+							<option>Kragg</option>
+							<option>Maypul</option>
+							<option>Orcane</option>
+							<option>Ori</option>
+							<option>Wrastor</option>
+							<option selected>Zetterburn</option>
+						</select>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="form-group col-md-3">
+						<label for="targetP">Percentage (%)</label>
+						<input class="form-control" id="targetP" type="number" value="100" min="0" max="999"></input>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="form-group col-md-3">
+						<label for="driftDI">Drift DI</label>
+						<select class="form-control" id="driftDI">
+							<option>Left</option>
+							<option selected>None</option>
+							<option>Right</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="attackBKB">Base KB</label>
+						<input class="form-control" id="attackBKB" type="number" value="8" min="0" max="16"></input>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="form-group col-md-3">
+						<label for="attackKBG">KB scaling</label>
+						<input class="form-control" id="attackKBG" type="number" value="1.10" min="0.00" max="2.00" step="0.05"></input>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="form-group col-md-3">
+						<label for="attackP">% Dealt</label>
+						<input class="form-control" id="attackP" type="number" value="7" min="0" max="40"></input>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="angle1">Knockback angle</label>
+						<input class="form-control" id="angle1" type="number" value="90" min="0" max="360" step="5"></input>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="form-group col-md-3">
+						<label for="angle2">Player DI angle</label>
+						<input class="form-control" id="angle2" type="number" value="180" min="0" max="360" step="5"></input>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="form-group col-md-3">
+						<label for="hMod">Hitstun modifier</label>
+						<input class="form-control" id="hMod" type="number" value="1.00" min="0.00" max="2.00" step="0.05"></input>
+					</div>
+
+				</div>
+
+
+			</div>
+			<div class="col-md-4" style="padding:0px">
+				<div id="output"></div>
+			</div>
+
+		</div>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<p>v0.9.0</p>
+					</div>
+					<div class="col-md-4" style="text-align: center">
+						<p><a href="../index.html">Return to Project Listing</a></p>
+					</div>
+					<div class="col-md-4" style="text-align: right">
+						<p>Written by Menace13</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- /.container -->
+
+	<script src="lib/jquery-3.2.1.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="kbcalc.js"></script>
+</body>
+
+</html>
