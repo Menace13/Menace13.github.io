@@ -17,12 +17,13 @@
 
 <body>
 	<div class="container">
+		<br>
 		<div class="container">
-			<div class="col-md-8">
+			<div class="col-sm-8">
 				<!-- main calculator stuff -->
 				<div class="row">
-					<div class="form-group col-md-3">
-						<label for="targetC">Hit Character</label>
+					<div class="form-group col-md-4">
+						<label for="targetC">Hit Character<span class="info" data-toggle="tooltip" data-placement="bottom" title="This is where you select the character that is being hit by an attack. Character data is pre-programmed (knockback adjustment, hitstun gravity acceleration, and air friction)."></span></label>
 						<select class="form-control" id="targetC">
 							<option>Absa</option>
 							<option>Etalus</option>
@@ -36,14 +37,12 @@
 							<option selected>Zetterburn</option>
 						</select>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="form-group col-md-3">
-						<label for="targetP">Percentage (%)</label>
+					<div class="form-group col-md-4">
+						<label for="targetP">Percentage (%)<span class="info" data-toggle="tooltip" data-placement="bottom" title="The player's percentage BEFORE being hit."></span></label>
 						<input class="form-control" id="targetP" type="number" value="100" min="0" max="999"></input>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="form-group col-md-3">
-						<label for="driftDI">Drift DI</label>
+					<div class="form-group col-md-4">
+						<label for="driftDI">Drift DI<span class="info" data-toggle="tooltip" data-placement="bottom" title="Whether the hit player is holding left, right, or neither. There is no in-between, either you input full Drift DI to the left, full Drift DI to the right, or no Drift DI. For the purposes of this calculator, the player cannot change their Drift DI once they enter hitstun."></span></label>
 						<select class="form-control" id="driftDI">
 							<option>Left</option>
 							<option selected>None</option>
@@ -52,43 +51,39 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-3">
-						<label for="attackBKB">Base KB</label>
+					<div class="form-group col-md-4">
+						<label for="attackBKB">Base KB<span class="info" data-toggle="tooltip" data-placement="bottom" title="The base knockback of the move being used. This value IS NOT affected by the player's percentage. You can find these values within the dev_mode files or in patch notes."></span></label>
 						<input class="form-control" id="attackBKB" type="number" value="8" min="0" max="16"></input>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="form-group col-md-3">
-						<label for="attackKBG">KB scaling</label>
+					<div class="form-group col-md-4">
+						<label for="attackKBG">KB scaling<span class="info" data-toggle="tooltip" data-placement="bottom" title="The knockback scaling of the move being used. This value IS affected by the player's percentage. You can find these values within the dev_mode files or in patch notes."></span></label>
 						<input class="form-control" id="attackKBG" type="number" value="1.10" min="0.00" max="2.00" step="0.05"></input>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="form-group col-md-3">
-						<label for="attackP">% Dealt</label>
+					<div class="form-group col-md-4">
+						<label for="attackP">% Dealt<span class="info" data-toggle="tooltip" data-placement="bottom" title="The TOTAL percentage dealt by the move being used. Knockback is calculated from the player's percentage AFTER being hit, not before."></span></label>
 						<input class="form-control" id="attackP" type="number" value="7" min="0" max="40"></input>
 					</div>
 
 				</div>
 				<div class="row">
-					<div class="form-group col-md-3">
-						<label for="angle1">Knockback angle</label>
+					<div class="form-group col-md-4">
+						<label for="angle1">Knockback angle<span class="info" data-toggle="tooltip" data-placement="bottom" title="The base angle of knockback trajectory, in degrees. A player's DI can change this number by up to 18 degrees. You can find these values within the dev_mode files or in patch notes. For moves with a knockback angle of 361, replace the angle with 45 if hit in the air or with 40 if hit on the ground. For moves with an angle flipper of 1, 2, 8, or 9, this calculator WILL NOT WORK properly, so look out for that."></span></label>
 						<input class="form-control" id="angle1" type="number" value="90" min="0" max="360" step="5"></input>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="form-group col-md-3">
-						<label for="angle2">Player DI angle</label>
+					<div class="form-group col-md-4">
+						<label for="angle2">Player DI angle<span class="info" data-toggle="tooltip" data-placement="bottom" title="The angle input by the player being hit on the frame that hitpause ends and knockback / hitstun begins. For no DI, simply set this value to the same value as the knockback angle."></span></label>
 						<input class="form-control" id="angle2" type="number" value="180" min="0" max="360" step="5"></input>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="form-group col-md-3">
-						<label for="hMod">Hitstun modifier</label>
+					<div class="form-group col-md-4">
+						<label for="hMod">Hitstun modifier<span class="info" data-toggle="tooltip" data-placement="bottom" title="This is a strict multiplier to hitstun values. A hitstun modifier of 0.90 will put the player in hitstun for 90% of the frames that a move with a hitstun modifier of 1.00 would. You can find these values within the dev_mode files or in patch notes. Moves with a listed hitstun modifier of 0 will default to a hitstun modifier of 1.00 instead."></span></label>
 						<input class="form-control" id="hMod" type="number" value="1.00" min="0.00" max="2.00" step="0.05"></input>
 					</div>
 
 				</div>
-
+	
 
 			</div>
-			<div class="col-md-4" style="padding:0px">
+			<div class="col-sm-4" style="padding:0px">
 				<div id="output"></div>
 			</div>
 
@@ -97,7 +92,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
-						<p>v0.9.0</p>
+						<p>v1.0.0</p>
 					</div>
 					<div class="col-md-4" style="text-align: center">
 						<p><a href="../index.html">Return to Project Listing</a></p>

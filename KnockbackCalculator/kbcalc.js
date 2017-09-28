@@ -14,6 +14,7 @@ var percentage = 107;
 
 $(document).ready(function() {
 	calculate();
+	$('[data-toggle="tooltip"]').tooltip(); 
 	$("#targetC").change(function() {
 		charAttributes();
 	});
@@ -134,6 +135,8 @@ function calculate() {
 	
 	var maxY = 0;
 	
+	var hsFrames = 0;
+	
 	velX = Math.cos(rad(finalAngle)) * finalKB;
 	velY = Math.sin(rad(finalAngle)) * finalKB;
 	
@@ -169,6 +172,7 @@ function calculate() {
 				maxY = y;
 			}
 		}
+		hsFrames = i;
 	}
 	
 	finalKB = Math.round(finalKB * 100) / 100;
@@ -177,8 +181,9 @@ function calculate() {
 	y = Math.round(y);
 	maxY = Math.round(maxY);
 	
-	buildUpon += "Final knockback: " + finalKB + " pixels per second<br>";
+	buildUpon += "Final knockback: " + finalKB + " pixels per frame<br>";
 	buildUpon += "Final knockback angle: " + finalAngle + " degrees<br>";
+	buildUpon += "Total frames of hitstun: " + hsFrames + " frames<br>";
 	buildUpon += "Max height (in hitstun): " + maxY + " pixels<br>";
 	buildUpon += "Position after hitstun: (" + x + "," + y + ")<br>";
 	if(Math.sin(rad(finalAngle)) < 0) {
