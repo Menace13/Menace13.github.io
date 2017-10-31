@@ -12,6 +12,8 @@ var weight = 1.00;
 var etalusArmor = false;
 var percentage = 107;
 
+var multiTest = false;
+
 $(document).ready(function() {
 	calculate();
 	$('[data-toggle="tooltip"]').tooltip(); 
@@ -27,9 +29,19 @@ $(document).ready(function() {
 		bkb = $("#attackBKB").val();
 		hitstunMod = $("#hMod").val();
 		kbg = $("#attackKBG").val();
-		percentage = parseInt($("#targetP").val()) + parseInt($("#attackP").val());
-		if(percentage > 999) { percentage = 999; };
-		calculate();
+		if($("#targetP").val() == "-1") {
+			$("#output").html("Percentage,Final X,Max Y<br/>");
+			multiTest = true;
+			for(var i = 0; i < 201; i++) {
+				percentage = i + parseInt($("#attackP").val());
+				calculate();
+			}
+		} else {
+			multiTest = false;
+			percentage = parseInt($("#targetP").val()) + parseInt($("#attackP").val());
+			if(percentage > 999) { percentage = 999; };
+			calculate();
+		}
 	});
 });
 
@@ -57,6 +69,11 @@ function charAttributes() {
 			G = 0.45;
 			weight = 1.10;
 			break;
+		case "Clairen":
+			aFriction = 0.02;
+			G = 0.5;
+			weight = 1.00;
+			break;
 		case "Etalus":
 			aFriction = 0.04;
 			G = 0.50;
@@ -79,7 +96,7 @@ function charAttributes() {
 			weight = 0.90;
 			break;
 		case "Maypul":
-			aFriction = 0.05;
+			aFriction = 0.06;
 			G = 0.50;
 			weight = 1.10;
 			break;
@@ -93,8 +110,13 @@ function charAttributes() {
 			G = 0.50;
 			weight = 1.15;
 			break;
+		case "Ranno":
+			aFriction = 0.02;
+			G = 0.5;
+			weight = 1.05;
+			break;
 		case "Wrastor":
-			aFriction = 0.04;
+			aFriction = 0.05;
 			G = 0.45;
 			weight = 1.20;
 			break;
@@ -107,7 +129,7 @@ function charAttributes() {
 }
 
 function calculate() {
-	//console.log(bkb + " " + kbg + " " + percentage + " " + weight);
+	console.log(bkb + " " + kbg + " " + percentage + " " + weight);
 	
 	var finalKB = parseFloat(bkb) + parseFloat(kbg * weight * percentage * kbgMulti);
 	
@@ -133,7 +155,10 @@ function calculate() {
 	var velX = 0;
 	var velY = 0;
 	
+	var maxX = 0;
+	var minX = 0;
 	var maxY = 0;
+	var minY = 0;
 	
 	var hsFrames = 0;
 	
@@ -180,21 +205,46 @@ function calculate() {
 	x = Math.round(x);
 	y = Math.round(y);
 	maxY = Math.round(maxY);
-	
-	buildUpon += "Final knockback: " + finalKB + " pixels per frame<br>";
-	buildUpon += "Final knockback angle: " + finalAngle + " degrees<br>";
-	buildUpon += "Total frames of hitstun: " + hsFrames + " frames<br>";
-	buildUpon += "Max height (in hitstun): " + maxY + " pixels<br>";
-	buildUpon += "Position after hitstun: (" + x + "," + y + ")<br>";
-	if(Math.sin(rad(finalAngle)) < 0) {
-		buildUpon += "<br>Disclaimer: Calculations may have some errors for moves with downwards knockback."
+		
+	if(!multiTest) {
+		buildUpon += "Final knockback: " + finalKB + " pixels per frame<br>";
+		buildUpon += "Final knockback angle: " + finalAngle + " degrees<br>";
+		buildUpon += "Total frames of hitstun: " + hsFrames + " frames<br>";
+		buildUpon += "Max height (in hitstun): " + maxY + " pixels<br>";
+		buildUpon += "Position after hitstun: (" + x + "," + y + ")<br>";
+		if(Math.sin(rad(finalAngle)) < 0) {
+			buildUpon += "<br>Disclaimer: Calculations may have some errors for moves with downwards knockback."
+		}
+		if(etalusArmor) {
+			buildUpon += "<br>Disclaimer: Hitstun calculation for Etalus with armor may be slightly off."
+		}
+		$("#output").html(buildUpon);
+	} else {
+		buildUpon += (percentage - parseInt($("#attackP").val())) + " ,";
+		buildUpon += x + "," + maxY;
+		$("#output").append(buildUpon + "<br/>");
 	}
-	if(etalusArmor) {
-		buildUpon += "<br>Disclaimer: Hitstun calculation for Etalus with armor may be slightly off."
-	}
-	$("#output").html(buildUpon);
 }
 
 function rad(angle) {
   return angle * (Math.PI / 180);
+}
+
+function copyToClipboard(element) {
+  var text = $(element).clone().find('br').prepend('\r\n').end().text()
+  element = $('<textarea>').appendTo('body').val(text).select()
+  document.execCommand('copy')
+  element.remove()
+}
+
+function validate() {
+	var ok = true;
+
+
+
+
+
+
+
+	return ok;
 }
