@@ -71,11 +71,11 @@ $(document).ready (function () {
 		}
 		timeouts = [];
 		if($('#speed1').is(':checked')) {
-			timeouts.push(setTimeout(function(){tableUpdate();}, 60000));
-			$("#countdown").html(60);
+			timeouts.push(setTimeout(function(){tableUpdate();}, 300E3));
+			$("#countdown").html(300);
 		} else {
-			timeouts.push(setTimeout(function(){tableUpdate();}, 15000));	
-			$("#countdown").html(15);
+			timeouts.push(setTimeout(function(){tableUpdate();}, 60E3));	
+			$("#countdown").html(60);
 		}
 		timeouts.push(setTimeout(function(){countdown();}, 1000));
 	});
@@ -232,10 +232,10 @@ function tableUpdate() {
 	//console.log("Updated.");	
 	
 	if($('#speed1').is(':checked')) {
-		timeouts.push(setTimeout(function(){tableUpdate();}, 30E4));
+		timeouts.push(setTimeout(function(){tableUpdate();}, 300E3));
 		$("#countdown").html(300);
 	} else {
-		timeouts.push(setTimeout(function(){tableUpdate();}, 6E4));	
+		timeouts.push(setTimeout(function(){tableUpdate();}, 60E3));	
 		$("#countdown").html(60);
 	}
 }
